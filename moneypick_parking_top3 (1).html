@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이자 7% 파킹통장 TOP3 | 머니픽</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F5C842;
+    --gold-light: #FFE680;
+    --dark: #0D0D0D;
+    --dark2: #161616;
+    --dark3: #1E1E1E;
+    --card: #222222;
+    --card2: #2A2A2A;
+    --text: #F0EEE9;
+    --muted: #888;
+    --ok: #FF6B35;
+    --kb: #FFD700;
+    --acuon: #4FC3F7;
+    --green: #66BB6A;
+    --red: #EF5350;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #1a1400 0%, #0D0D0D 60%);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,200,66,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .brand-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 12vw, 90px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-sub {
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 18px;
+    animation: fadeUp 0.7s 0.15s ease both;
+  }
+  .hero-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 420px;
+    margin: 0 auto 28px;
+    animation: fadeUp 0.7s 0.25s ease both;
+  }
+  .hero-badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.35s ease both;
+  }
+  .hero-badge {
+    background: var(--dark3);
+    border: 1px solid #333;
+    border-radius: 30px;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  /* ── SECTION ── */
+  .section { padding: 40px 20px; max-width: 520px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+
+  /* ── COMPARE BANNER ── */
+  .compare-banner {
+    background: var(--dark3);
+    border: 1px solid #2e2e2e;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .compare-side {
+    flex: 1;
+    text-align: center;
+  }
+  .compare-pct {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+  }
+  .compare-side.bad .compare-pct { color: var(--muted); }
+  .compare-side.good .compare-pct { color: var(--gold); }
+  .compare-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .compare-vs {
+    font-size: 13px; font-weight: 700; color: #444;
+    background: #1a1a1a; border-radius: 50%; width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .compare-arrow {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card);
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #2e2e2e;
+    animation: fadeUp 0.6s ease both;
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-3px); }
+  .card-header {
+    padding: 22px 22px 18px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .rank-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    line-height: 1;
+    opacity: 0.15;
+    position: absolute;
+    right: 22px;
+    top: 14px;
+  }
+  .card-header-left { position: relative; z-index: 1; }
+  .card-bank-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  .tag-ok { background: rgba(255,107,53,0.2); color: var(--ok); }
+  .tag-kb { background: rgba(255,215,0,0.2); color: var(--kb); }
+  .tag-acuon { background: rgba(79,195,247,0.2); color: var(--acuon); }
+
+  .card-name { font-size: 17px; font-weight: 900; margin-bottom: 4px; }
+  .card-nickname { font-size: 13px; color: var(--muted); }
+  .card-rate {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 46px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .rate-ok { color: var(--ok); }
+  .rate-kb { color: var(--kb); }
+  .rate-acuon { color: var(--acuon); }
+
+  .card-divider { height: 1px; background: #2e2e2e; margin: 0 22px; }
+  .card-body { padding: 18px 22px 22px; position: relative; }
+
+  /* RATE TABLE */
+  .rate-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .rate-table th {
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--muted); padding: 0 0 8px; text-align: left; font-weight: 600;
+  }
+  .rate-table td {
+    font-size: 13px; padding: 7px 0; border-bottom: 1px solid #2a2a2a;
+    vertical-align: middle;
+  }
+  .rate-table tr:last-child td { border-bottom: none; }
+  .rate-table .amount { color: var(--text); font-weight: 500; }
+  .rate-table .pct { font-weight: 700; font-family: 'Bebas Neue', sans-serif; font-size: 15px; }
+  .pct-ok { color: var(--ok); }
+  .pct-kb { color: var(--kb); }
+  .pct-acuon { color: var(--acuon); }
+  .highlight-row td { background: rgba(255,255,255,0.03); border-radius: 6px; }
+
+  /* CONDITION PILLS */
+  .cond-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+  .cond-pill {
+    font-size: 12px; padding: 5px 12px; border-radius: 20px;
+    border: 1px solid #333; color: var(--text); background: var(--dark3);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .cond-pill .icon { font-size: 13px; }
+
+  /* INTEREST BOX */
+  .interest-box {
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .int-ok { background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); }
+  .int-kb { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); }
+  .int-acuon { background: rgba(79,195,247,0.08); border: 1px solid rgba(79,195,247,0.2); }
+  .interest-box .int-icon { font-size: 22px; flex-shrink: 0; }
+  .interest-box .int-title { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .interest-box .int-amount { font-size: 22px; font-weight: 900; }
+  .interest-box .int-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .int-amount-ok { color: var(--ok); }
+  .int-amount-kb { color: var(--kb); }
+  .int-amount-acuon { color: var(--acuon); }
+
+  /* TIP BOX */
+  .tip-box {
+    background: var(--dark3);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #ccc;
+    margin-top: 14px;
+  }
+  .tip-box strong { color: var(--gold); }
+
+  /* RECOMMEND BADGE */
+  .rec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245,200,66,0.12);
+    border: 1px solid rgba(245,200,66,0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-top: 14px;
+  }
+
+  /* ── SPLIT STRATEGY ── */
+  .strategy-box {
+    background: linear-gradient(135deg, #1a1800 0%, #1a1a1a 100%);
+    border: 1px solid rgba(245,200,66,0.25);
+    border-radius: 24px;
+    padding: 28px 22px;
+    margin-bottom: 20px;
+  }
+  .strategy-title {
+    font-size: 18px; font-weight: 900; margin-bottom: 6px;
+  }
+  .strategy-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+
+  .split-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .split-item:last-child { border-bottom: none; }
+  .split-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .dot-ok { background: var(--ok); }
+  .dot-kb { background: var(--kb); }
+  .dot-acuon { background: var(--acuon); }
+
+  .split-info { flex: 1; }
+  .split-name { font-size: 14px; font-weight: 700; }
+  .split-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .split-amount { font-size: 16px; font-weight: 900; }
+
+  .strategy-total {
+    margin-top: 20px;
+    background: var(--dark3);
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .total-label { font-size: 13px; color: var(--muted); }
+  .total-interest { font-size: 26px; font-weight: 900; color: var(--gold); }
+  .total-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── FAQ ── */
+  .faq-item {
+    background: var(--card);
+    border: 1px solid #2e2e2e;
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+  }
+  .faq-q {
+    font-size: 14px; font-weight: 700; margin-bottom: 10px;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .faq-q-icon { color: var(--gold); flex-shrink: 0; }
+  .faq-a { font-size: 13px; color: #bbb; line-height: 1.8; }
+  .faq-a strong { color: var(--gold); }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #222;
+    line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+  .warn-icon { color: var(--red); flex-shrink: 0; margin-top: 2px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark2);
+    border-top: 1px solid #222;
+    padding: 30px 24px;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+  .footer-desc { font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .footer-disclaimer {
+    margin-top: 16px;
+    font-size: 10px;
+    color: #444;
+    line-height: 1.8;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333, transparent);
+    margin: 10px 0 32px;
+  }
+
+  /* WARNING BANNER */
+  .warn-banner {
+    background: rgba(239,83,80,0.1);
+    border: 1px solid rgba(239,83,80,0.25);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #ff8a80;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .number-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+  .badge-ok { background: var(--ok); color: #fff; }
+  .badge-kb { background: var(--kb); color: #000; }
+  .badge-acuon { background: var(--acuon); color: #000; }
+
+  /* mobile */
+  @media (max-width: 480px) {
+    .hero-title { font-size: 64px; }
+    .card-rate { font-size: 38px; }
+    .rank-num { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="brand-tag">💰 머니픽 × 파킹통장</div>
+  <div class="hero-title">7% 파킹<br>통장</div>
+  <div class="hero-sub">TOP 3 완벽 정리 가이드</div>
+  <div class="hero-desc">
+    하루만 넣어도 이자 발생 · 언제든 출금 OK<br>
+    일반통장보다 최대 <strong style="color:var(--gold)">70배</strong> 높은 이자 받는 법
+  </div>
+  <div class="hero-badge-row">
+    <span class="hero-badge">📅 2026년 최신</span>
+    <span class="hero-badge">🔒 예금자보호 1억</span>
+    <span class="hero-badge">✅ 팩트 기반</span>
+  </div>
+</div>
+
+<div style="max-width:520px;margin:0 auto">
+
+<!-- ═══ WHY 파킹통장 ═══ -->
+<div class="section">
+  <div class="section-label">Before We Start</div>
+  <div class="section-title">일반통장 그냥 쓰면<br>이자 70배 손해봐요 😱</div>
+
+  <div class="compare-banner">
+    <div class="compare-side bad">
+      <div class="compare-pct">0.1%</div>
+      <div class="compare-label">일반 입출금통장</div>
+    </div>
+    <div class="compare-vs">VS</div>
+    <div class="compare-side good">
+      <div class="compare-pct">7%</div>
+      <div class="compare-label">파킹통장 (OK저축은행)</div>
+    </div>
+  </div>
+  <div class="compare-arrow">→ 같은 50만원, 이자 차이 70배! ←</div>
+
+  <div style="margin-top:20px;background:var(--dark3);border-radius:16px;padding:18px 20px">
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px">🅿️ 파킹통장이란?</div>
+    <div style="font-size:13px;color:#bbb;line-height:1.9">
+      차를 <strong style="color:var(--gold)">잠깐 주차</strong>하듯 돈을 맡겨두는 통장.<br>
+      예금처럼 묶어두지 않아도 되고,<br>
+      <strong style="color:var(--text)">하루만 맡겨도</strong> 그날 이자가 바로 계산돼요.<br>
+      2025년 9월부터 예금자보호 한도가 <strong style="color:var(--gold)">1억원</strong>으로 올라가서<br>
+      저축은행도 1억까지 완벽하게 보호됩니다!
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 20px"></div>
+
+<!-- ═══ TOP 3 CARDS ═══ -->
+<div class="section" style="padding-top:24px">
+  <div class="section-label">Main Contents</div>
+  <div class="section-title">금리 높은 순<br>파킹통장 TOP 3 🏆</div>
+
+  <!-- CARD 1: OK저축은행 -->
+  <div class="card" style="animation-delay:0.1s">
+    <div class="card-header" style="position:relative">
+      <div class="card-header-left">
+        <div class="card-bank-tag tag-ok">🏦 OK저축은행</div>
+        <div class="card-name">OK 짠테크통장 II</div>
+        <div class="card-nickname">소액 파킹 입문자 최애 🔥</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div class="card-rate rate-ok">7.0%</div>
+        <div style="font-size:11px;color:var(--muted)">최고 연이율(세전)</div>
+      </div>
+      <div class="rank-num" style="color:var(--ok)">1</div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body">
+
+      <table class="rate-table">
+        <tr>
+          <th>예치 금액</th>
+          <th>기본 금리</th>
+          <th>우대 포함</th>
+        </tr>
+        <tr class="highlight-row">
+          <td class="amount">50만원 이하 ⭐</td>
+          <td class="pct pct-ok">5.0%</td>
+          <td class="pct pct-ok">7.0%</td>
+        </tr>
+        <tr>
+          <td class="amount">500만원 이하</td>
+          <td class="pct" style="color:var(--muted)">0.8%</td>
+          <td class="pct" style="color:var(--muted)">0.8%</td>
+        </tr>
+        <tr>
+          <td class="amount">5,000만원 이하</td>
+          <td class="pct" style="color:var(--muted)">0.1%</td>
+          <td class="pct" style="color:var(--muted)">0.1%</td>
+        </tr>
+      </table>
+
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:700">우대조건 (최대 +2.0%)</div>
+      <div class="cond-row">
+        <div class="cond-pill"><span class="icon">📱</span> 4대 페이 or 카드결제 연결 +1.8%</div>
+        <div class="cond-pill"><span class="icon">📢</span> 마케팅 동의 +0.2%</div>
+      </div>
+
+      <div class="interest-box int-ok">
+        <div class="int-icon">💸</div>
+        <div>
+          <div class="int-title">50만원 예치 시 실수령 이자</div>
+          <div class="int-amount int-amount-ok">월 2,400원 · 연 28,800원</div>
+          <div class="int-note">세전 기준 / 우대조건 모두 충족 시</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        💡 <strong>머니픽 꿀팁:</strong> 페이 연결은 카카오페이·토스·네이버페이·페이코 중 아무거나 하나만 해도 OK! 단, <strong>OK저축은행 보통예금 미보유자(신규)만 가입 가능</strong>하고 1인 1계좌 한정이에요.
+      </div>
+      <div class="rec-badge">✅ 추천 예치금: 딱 50만원까지</div>
+    </div>
+  </div>
+
+  <!-- CARD 2: SC제일은행 -->
+  <div class="card" style="animation-delay:0.2s">
+    <div class="card-header" style="position:relative">
+      <div class="card-header-left">
+        <div class="card-bank-tag" style="background:rgba(0,100,200,0.2);color:#4DA6FF">🏦 SC제일은행</div>
+        <div class="card-name">스마트박스 통장</div>
+        <div class="card-nickname">목돈 굴리기 최강 · 한도 무제한 💙</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div class="card-rate" style="color:#4DA6FF">5.0%</div>
+        <div style="font-size:11px;color:var(--muted)">최고 연이율(세전)</div>
+      </div>
+      <div class="rank-num" style="color:#4DA6FF">2</div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body">
+
+      <table class="rate-table">
+        <tr>
+          <th>조건</th>
+          <th>금리</th>
+        </tr>
+        <tr>
+          <td class="amount">기본 금리</td>
+          <td class="pct" style="color:var(--muted)">0.3%</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="amount">잔액의 50% 한도 구간 ⭐</td>
+          <td class="pct" style="color:#4DA6FF">3.0%</td>
+        </tr>
+        <tr>
+          <td class="amount">첫 거래 고객 우대</td>
+          <td class="pct" style="color:#4DA6FF">+1.0%</td>
+        </tr>
+        <tr>
+          <td class="amount">마케팅 동의</td>
+          <td class="pct" style="color:var(--muted)">+0.2%</td>
+        </tr>
+        <tr>
+          <td class="amount">급여이체</td>
+          <td class="pct" style="color:var(--muted)">+0.3%</td>
+        </tr>
+      </table>
+
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:700">우대조건 (최대 +2.0%)</div>
+      <div class="cond-row">
+        <div class="cond-pill"><span class="icon">🆕</span> SC제일은행 첫 거래 고객 +1.0%</div>
+        <div class="cond-pill"><span class="icon">📢</span> 마케팅 동의 +0.2%</div>
+        <div class="cond-pill"><span class="icon">💰</span> 급여이체 +0.3%</div>
+      </div>
+
+      <div style="background:rgba(77,166,255,0.07);border:1px solid rgba(77,166,255,0.2);border-radius:12px;padding:12px 14px;margin-bottom:14px">
+        <div style="font-size:12px;color:#4DA6FF;font-weight:700;margin-bottom:6px">🌟 이 통장의 핵심 장점</div>
+        <div style="font-size:13px;color:#bbb;line-height:1.8">
+          예치 한도 제한 없음 → <strong style="color:var(--text)">수천만원 목돈도 OK!</strong><br>
+          1금융권 신뢰도 + 상대적 고금리 조합<br>
+          2억 이상 굴릴 때 가장 유리한 구조
+        </div>
+      </div>
+
+      <div class="interest-box" style="background:rgba(77,166,255,0.08);border:1px solid rgba(77,166,255,0.2)">
+        <div class="int-icon">💸</div>
+        <div>
+          <div class="int-title">1억원 예치 시 실수령 이자 (우대 포함)</div>
+          <div class="int-amount" style="color:#4DA6FF">월 약 350,000원 · 연 약 4,200,000원</div>
+          <div class="int-note">세전 기준 / 우대조건 모두 충족 시 · 추가 확인 필요</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        💡 <strong>머니픽 꿀팁:</strong> 급여이체 조건을 충족하면 +0.3% 추가! 1금융권이라 심리적 안정감도 높고, 한도 제한 없어서 목돈 파킹용으로는 TOP 선택지입니다. 단, 최고 5% 받으려면 스마트박스 구간 잔액이 1억 이상(전체 2억 이상) 필요해요.
+      </div>
+      <div class="rec-badge">✅ 추천 예치금: 수천만원 이상 목돈</div>
+    </div>
+  </div>
+
+  <!-- CARD 3: 애큐온 -->
+  <div class="card" style="animation-delay:0.3s">
+    <div class="card-header" style="position:relative">
+      <div class="card-header-left">
+        <div class="card-bank-tag tag-acuon">🏦 애큐온저축은행</div>
+        <div class="card-name">머니모으기 통장</div>
+        <div class="card-nickname">미션 달성하면 5% · 최대 1,000만원 🩵</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div class="card-rate rate-acuon">5.0%</div>
+        <div style="font-size:11px;color:var(--muted)">최고 연이율(세전)</div>
+      </div>
+      <div class="rank-num" style="color:var(--acuon)">3</div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body">
+
+      <table class="rate-table">
+        <tr>
+          <th>조건</th>
+          <th>금리</th>
+        </tr>
+        <tr>
+          <td class="amount">기본 금리 (4~26주)</td>
+          <td class="pct" style="color:var(--muted)">2.0%</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="amount">목표 저축 성공 시 ⭐</td>
+          <td class="pct pct-acuon">+2.0%</td>
+        </tr>
+        <tr>
+          <td class="amount">출석체크 12회 완료 (택1)</td>
+          <td class="pct pct-acuon">+1.0%</td>
+        </tr>
+        <tr>
+          <td class="amount">마케팅 동의 (택1, 위와 중복 불가)</td>
+          <td class="pct" style="color:var(--muted)">+0.5%</td>
+        </tr>
+      </table>
+
+      <div style="background:rgba(79,195,247,0.07);border:1px solid rgba(79,195,247,0.2);border-radius:12px;padding:12px 14px;margin-bottom:14px">
+        <div style="font-size:12px;color:var(--acuon);font-weight:700;margin-bottom:6px">🌟 이 통장의 핵심 장점</div>
+        <div style="font-size:13px;color:#bbb;line-height:1.8">
+          1인당 200만원, <strong style="color:var(--text)">계좌 5개</strong> 개설 가능<br>
+          → 200만원 × 5개 = <strong style="color:var(--acuon)">총 1,000만원을 5%로!</strong>
+        </div>
+      </div>
+
+      <div class="interest-box int-acuon">
+        <div class="int-icon">💸</div>
+        <div>
+          <div class="int-title">1,000만원 예치 시 실수령 이자</div>
+          <div class="int-amount int-amount-acuon">월 22,000원 · 연 264,000원</div>
+          <div class="int-note">세전 기준 / 미션 성공 + 계좌 5개 활용 시</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        💡 <strong>머니픽 꿀팁:</strong> 우대조건2는 출석체크(+1%) OR 마케팅 동의(+0.5%) 중 <strong>택1만 가능</strong>, 중복 적용 안 돼요! 이왕이면 출석체크가 유리해요. 중간에 돈 인출하면 모으기 미션 실패로 우대금리 날아가니 여유자금으로만 넣어두세요.
+      </div>
+      <div class="rec-badge">✅ 추천 예치금: 200만원 × 최대 5계좌</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 20px"></div>
+
+<!-- ═══ SPLIT STRATEGY ═══ -->
+<div class="section" style="padding-top:24px">
+  <div class="section-label">Smart Strategy</div>
+  <div class="section-title">이자 극대화<br>쪼개기 전략 💡</div>
+
+  <div class="strategy-box">
+    <div class="strategy-title">🎯 소액 + 목돈 분산 예치 플랜</div>
+    <div class="strategy-sub">
+      한 통장에 몰아넣지 말고, 각 통장의 고금리 구간에만 딱 맞춰 넣으면 평균 금리를 훨씬 높일 수 있어요!
+    </div>
+
+    <div class="split-item">
+      <div class="split-dot dot-ok"></div>
+      <div class="split-info">
+        <div class="split-name"><span class="number-badge badge-ok">1</span> OK 짠테크 II</div>
+        <div class="split-detail">연 7.0% · 50만원 구간 최고금리</div>
+      </div>
+      <div class="split-amount" style="color:var(--ok)">50만원</div>
+    </div>
+
+    <div class="split-item">
+      <div class="split-dot dot-acuon"></div>
+      <div class="split-info">
+        <div class="split-name"><span class="number-badge badge-acuon">2</span> 애큐온 머니모으기</div>
+        <div class="split-detail">연 5.0% · 미션 성공 시 / 최대 1,000만원</div>
+      </div>
+      <div class="split-amount" style="color:var(--acuon)">200만원~</div>
+    </div>
+
+    <div class="split-item" style="border-bottom:none">
+      <div class="split-dot" style="background:#4DA6FF"></div>
+      <div class="split-info">
+        <div class="split-name"><span class="number-badge" style="background:#4DA6FF;color:#fff">3</span> SC제일 스마트박스</div>
+        <div class="split-detail">연 최고 5.0% · 한도 없음 · 목돈 파킹용</div>
+      </div>
+      <div class="split-amount" style="color:#4DA6FF">목돈 전액</div>
+    </div>
+
+    <div class="strategy-total">
+      <div>
+        <div class="total-label">예치금 규모별 최적 조합</div>
+        <div class="total-interest">평균 금리 최대 6%+</div>
+        <div class="total-note">소액은 짠테크·애큐온 / 목돈은 SC제일은행으로 분산</div>
+      </div>
+      <div style="font-size:32px">🤑</div>
+    </div>
+  </div>
+
+  <div style="background:var(--dark3);border-radius:16px;padding:18px 20px">
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--gold)">🔑 쪼개기 핵심 원칙</div>
+    <ul class="checklist">
+      <li><span class="check-icon">✅</span> 각 통장의 최고금리 구간 한도에만 딱 맞게 예치</li>
+      <li><span class="check-icon">✅</span> 우대조건 미리 확인하고 반드시 충족시키기</li>
+      <li><span class="check-icon">✅</span> 새 통장 만들 때 영업일 기준 20일 간격 지키기</li>
+      <li><span class="warn-icon">❌</span> 한도 초과해서 넣으면 초과분은 초저금리 적용!</li>
+      <li><span class="warn-icon">❌</span> 머니모으기는 중간 인출 시 우대금리 날아감</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 20px"></div>
+
+<!-- ═══ FAQ ═══ -->
+<div class="section" style="padding-top:24px">
+  <div class="section-label">FAQ</div>
+  <div class="section-title">많이 물어보는<br>질문 모음 🙋</div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-icon">Q.</span> 저축은행이 불안한데, 예금자 보호 되나요?</div>
+    <div class="faq-a">
+      <strong>네, 1억원까지 100% 보호됩니다!</strong><br>
+      2025년 9월부터 예금자보호 한도가 5천만원 → <strong>1억원</strong>으로 올라갔어요. 1금융권이든 저축은행이든 동일하게 적용돼요. 이자 더 주는 저축은행에 넣는 게 오히려 이득입니다!
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-icon">Q.</span> 이자 계산할 때 세금도 떼나요?</div>
+    <div class="faq-a">
+      <strong>네, 이자소득세 15.4% 원천징수됩니다.</strong><br>
+      하지만 세금 떼고도 일반통장보다 훨씬 많이 받아요. 7% × (1-0.154) ≈ <strong>실수령 약 5.9%</strong> 수준이에요.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-icon">Q.</span> 파킹통장 여러 개 동시에 만들 수 있나요?</div>
+    <div class="faq-a">
+      <strong>개수 제한은 없지만, 순서가 중요해요!</strong><br>
+      비대면 금융계좌 개설 후 <strong>영업일 기준 20일</strong> 이내에는 다른 곳에서 계좌 개설이 제한될 수 있어요. 우선순위 정해서 하나씩 만드세요.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-icon">Q.</span> 이자는 언제 줘요? 매일 주나요?</div>
+    <div class="faq-a">
+      <strong>이자는 매일 계산되지만 지급은 보통 월 1회예요.</strong><br>
+      '하루 이자'는 연금리 ÷ 365일로 매일 쌓이고, 보통 월말 또는 익월 초에 한 번에 입금돼요. 상품마다 지급일이 다르니 가입 전 확인하세요!
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-q-icon">Q.</span> 한도 넘게 이자가 붙으면 어떻게 되죠?</div>
+    <div class="faq-a">
+      <strong>초과분에는 낮은 금리가 별도 적용돼요.</strong><br>
+      예: 짠테크통장 50만원 한도인데 이자 붙어서 50만 1원이 되면, 50만원까지는 7%, 나머지 1원에만 0.8%가 따로 적용되는 식이에요. 자동으로 구분 계산되니 걱정 안 해도 됩니다.
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="margin:0 20px"></div>
+
+<!-- ═══ CHECKLIST ═══ -->
+<div class="section" style="padding-top:24px;padding-bottom:40px">
+  <div class="section-label">Action Plan</div>
+  <div class="section-title">지금 바로 시작하는<br>파킹통장 세팅 순서 🚀</div>
+
+  <div style="background:var(--card);border-radius:20px;padding:22px 20px">
+    <ul class="checklist">
+      <li>
+        <span style="background:var(--gold);color:#000;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0">1</span>
+        <div><strong>OK 짠테크통장 II 먼저 개설</strong><br><span style="font-size:12px;color:var(--muted)">OK저축은행 앱 설치 → 비대면 계좌 개설 → 페이 연결 → 50만원 입금</span></div>
+      </li>
+      <li>
+        <span style="background:var(--gold);color:#000;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0">2</span>
+        <div><strong>20영업일 후 애큐온 머니모으기 개설</strong><br><span style="font-size:12px;color:var(--muted)">애큐온 앱 → 계좌 최대 5개 개설 → 200만원씩 입금 → 매일 출석체크</span></div>
+      </li>
+      <li>
+        <span style="background:var(--gold);color:#000;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0">3</span>
+        <div><strong>목돈 있다면 SC제일은행 스마트박스 개설</strong><br><span style="font-size:12px;color:var(--muted)">SC제일은행 앱 → 첫 거래 고객 확인 → 마케팅 동의 + 급여이체 조건 충족</span></div>
+      </li>
+      <li style="border-bottom:none">
+        <span style="background:var(--green);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0">✓</span>
+        <div><strong>매달 머니픽 팔로우해서 최신 파킹통장 업데이트 받기!</strong><br><span style="font-size:12px;color:var(--muted)">금리는 매달 바뀌어요. 팔로우하면 자동으로 최신 정보 받을 수 있어요 😊</span></div>
+      </li>
+    </ul>
+  </div>
+
+  <div style="margin-top:16px;background:rgba(245,200,66,0.08);border:1px solid rgba(245,200,66,0.25);border-radius:14px;padding:14px 16px;font-size:13px;color:#ccc;line-height:1.8">
+    ⚡ <strong style="color:var(--gold)">지금 당장!</strong> 통장에 잠들어 있는 돈, 오늘 옮기면 <strong style="color:var(--text)">내일부터 이자</strong> 바로 붙어요. 하루라도 빨리 옮기는 게 이득입니다!
+  </div>
+</div>
+
+</div><!-- /max-width -->
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <div class="footer-brand">MONEYPICK</div>
+  <div style="color:var(--gold);font-size:13px;margin-bottom:8px">세상의 모든 '돈'을 캐내는 정보 사냥꾼 🔍</div>
+  <div class="footer-desc">
+    정책지원·투자, 모르면 손해인 꿀팁 정리<br>
+    팔로우하고 부자 로드맵 올라타기 🚀
+  </div>
+  <div class="footer-disclaimer">
+    ※ 본 자료는 2026년 4월 기준으로 작성되었으며, 금리는 금융사 정책에 따라 수시로 변동될 수 있습니다.<br>
+    ※ 가입 전 반드시 해당 금융사 공식 앱 또는 홈페이지에서 최신 금리와 조건을 확인하세요.<br>
+    ※ 본 자료는 투자 권유가 아닌 정보 제공 목적으로 작성되었습니다.
+  </div>
+</div>
+
+</body>
+</html>
