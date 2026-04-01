@@ -631,11 +631,11 @@
       <div class="card-header-left">
         <div class="card-bank-tag tag-kb">🏦 KB국민카드</div>
         <div class="card-name">노리2 체크카드 (KB Pay)</div>
-        <div class="card-nickname">카페·편의점·모바일 10% 할인 ⭐</div>
+        <div class="card-nickname">10개 업종 일상 할인 + KB Pay 추가 2% ⭐</div>
       </div>
       <div style="text-align:right;flex-shrink:0">
-        <div class="card-rate rate-kb">10%</div>
-        <div style="font-size:11px;color:var(--muted)">카페·모바일 할인</div>
+        <div class="card-rate rate-kb">월최대<br>5만원</div>
+        <div style="font-size:11px;color:var(--muted)">통합 할인한도</div>
       </div>
       <div class="rank-num" style="color:var(--kb)">3</div>
     </div>
@@ -643,60 +643,132 @@
     <div class="card-body">
 
       <div class="cond-row">
-        <span class="cond-pill"><span class="icon">📋</span> 전월실적 20만원~</span>
+        <span class="cond-pill"><span class="icon">📋</span> 일상혜택 전월 20만원~</span>
+        <span class="cond-pill"><span class="icon">📱</span> KB Pay혜택 전월 30만원~</span>
         <span class="cond-pill"><span class="icon">💰</span> 연회비 무료</span>
-        <span class="cond-pill"><span class="icon">📱</span> KB Pay 추가할인</span>
       </div>
 
-      <table class="benefit-table">
+      <!-- 일상 혜택 -->
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--kb);text-transform:uppercase;margin-bottom:8px">⬛ 일상 혜택 (전월 20만원 이상 시)</div>
+      <table class="benefit-table" style="margin-bottom:6px">
         <tr>
           <th>혜택 영역</th>
-          <th style="text-align:right">할인률</th>
+          <th style="text-align:center">할인</th>
+          <th style="text-align:right;font-size:10px">월 한도</th>
         </tr>
         <tr class="highlight-row">
-          <td class="area">커피전문점<br><span style="font-size:11px;color:var(--muted)">스타벅스, 커피빈 등</span></td>
-          <td class="pct pct-kb">10%</td>
+          <td class="area">☕ 커피<br><span style="font-size:11px;color:var(--muted)">스타벅스(사이렌오더 포함), 커피빈</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:18px">10%</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">3천원</td>
         </tr>
         <tr>
-          <td class="area">모바일 앱스토어<br><span style="font-size:11px;color:var(--muted)">구글플레이, 앱스토어</span></td>
-          <td class="pct pct-kb">10%</td>
+          <td class="area">📱 모바일<br><span style="font-size:11px;color:var(--muted)">구글플레이스토어, 앱스토어</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:18px">10%</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">5천원</td>
         </tr>
         <tr class="highlight-row">
-          <td class="area">문화·영화<br><span style="font-size:11px;color:var(--muted)">CGV, 롯데시네마 등</span></td>
-          <td class="pct pct-kb">10%</td>
+          <td class="area">🎬 문화<br><span style="font-size:11px;color:var(--muted)">공연 티켓 예매 사이트</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:18px">10%</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">7천원</td>
         </tr>
         <tr>
-          <td class="area">뷰티·편의점</td>
-          <td class="pct pct-kb" style="font-size:16px">5%</td>
+          <td class="area">💄 뷰티<br><span style="font-size:11px;color:var(--muted)">올리브영, 미용실 업종</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:18px">5%</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">2천원</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="area">🏪 편의점<br><span style="font-size:11px;color:var(--muted)">GS25, CU</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:18px">5%</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">2천원</td>
         </tr>
         <tr>
-          <td class="area">KB Pay 추가 결제 시</td>
-          <td class="pct pct-kb" style="font-size:16px">+2%</td>
+          <td class="area">📺 구독<br><span style="font-size:11px;color:var(--muted)">넷플릭스, 유튜브프리미엄 / 건당 1만원 이상, 월 2회</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:15px">1,000원</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">2천원</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="area">🍔 배달<br><span style="font-size:11px;color:var(--muted)">배달의민족, 요기요 / 건당 1만원 이상, 월 1회</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:15px">1,000원</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">1천원</td>
+        </tr>
+        <tr>
+          <td class="area">📡 이동통신<br><span style="font-size:11px;color:var(--muted)">SKT, KT, LG U+, Liiv M / 건당 5만원 이상, 월 1회</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:15px">2,500원</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">2천5백원</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="area">🎥 영화<br><span style="font-size:11px;color:var(--muted)">CGV / 건당 1만원 이상, 월 2회</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:15px">4,000원</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">8천원</td>
+        </tr>
+        <tr>
+          <td class="area">🎡 놀이공원<br><span style="font-size:11px;color:var(--muted)">에버랜드, 롯데월드 / 건당 3만원 이상, 월 1회</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:15px">15,000원</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">1만5천원</td>
         </tr>
       </table>
 
-      <div style="background:rgba(255,215,0,0.07);border:1px solid rgba(255,215,0,0.2);border-radius:12px;padding:12px 14px;margin-bottom:14px">
-        <div style="font-size:12px;color:var(--kb);font-weight:700;margin-bottom:6px">📊 전월실적별 할인한도</div>
-        <div style="font-size:12px;color:#bbb;line-height:1.9">
-          · 전월 20만원 이상 → 일상 혜택 (카페·편의점 등) 적용<br>
-          · 전월 30만원 이상 → Play 혜택 (PC방 등) 추가 적용<br>
-          · 월 통합 할인 한도: 전월 실적 구간에 따라 차등 적용
+      <!-- KB Pay 혜택 -->
+      <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--kb);text-transform:uppercase;margin:14px 0 8px">⬛ KB Pay 혜택 (전월 30만원 이상 시 추가)</div>
+      <table class="benefit-table" style="margin-bottom:14px">
+        <tr>
+          <th>결제 방식</th>
+          <th style="text-align:center">추가 할인</th>
+          <th style="text-align:right;font-size:10px">월 한도</th>
+        </tr>
+        <tr class="highlight-row">
+          <td class="area">오프라인 KB Pay 결제<br><span style="font-size:11px;color:var(--muted)">전월 15만원 이용분까지</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:18px">+2%</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">3천원</td>
+        </tr>
+        <tr>
+          <td class="area">온라인 KB Pay 결제<br><span style="font-size:11px;color:var(--muted)">전월 10만원 이용분까지</span></td>
+          <td style="text-align:center;font-weight:900;color:var(--kb);font-family:'Bebas Neue',sans-serif;font-size:18px">+2%</td>
+          <td style="text-align:right;font-size:12px;color:var(--muted)">2천원</td>
+        </tr>
+      </table>
+
+      <!-- 전월실적별 통합한도 표 -->
+      <div style="background:rgba(255,215,0,0.07);border:1px solid rgba(255,215,0,0.2);border-radius:12px;padding:14px;margin-bottom:14px">
+        <div style="font-size:12px;color:var(--kb);font-weight:700;margin-bottom:10px">📊 전월 이용실적별 월간 통합 할인한도</div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px">
+          <tr style="border-bottom:1px solid #333">
+            <th style="padding:5px 4px;text-align:center;color:var(--muted);font-weight:600;font-size:11px">전월 실적</th>
+            <th style="padding:5px 4px;text-align:center;color:var(--muted);font-weight:600;font-size:11px">20만원 미만</th>
+            <th style="padding:5px 4px;text-align:center;color:var(--muted);font-weight:600;font-size:11px">20만원~</th>
+            <th style="padding:5px 4px;text-align:center;color:var(--muted);font-weight:600;font-size:11px">40만원~</th>
+            <th style="padding:5px 4px;text-align:center;color:var(--muted);font-weight:600;font-size:11px">60만원~</th>
+            <th style="padding:5px 4px;text-align:center;color:var(--muted);font-weight:600;font-size:11px">80만원~</th>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px;text-align:center;color:#bbb;font-size:11px">월 한도</td>
+            <td style="padding:6px 4px;text-align:center;color:var(--muted)">커피만</td>
+            <td style="padding:6px 4px;text-align:center;color:var(--kb);font-weight:700">2만원</td>
+            <td style="padding:6px 4px;text-align:center;color:var(--kb);font-weight:700">3만원</td>
+            <td style="padding:6px 4px;text-align:center;color:var(--kb);font-weight:700">4만원</td>
+            <td style="padding:6px 4px;text-align:center;color:var(--kb);font-weight:700">5만원</td>
+          </tr>
+        </table>
+        <div style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6">
+          ※ 일상 혜택 [커피] 할인은 전월실적 없어도 제공<br>
+          ※ KB Pay 혜택(+2%)은 전월 30만원 이상 시 추가 적용<br>
+          ※ KB Pay형과 Global형은 <strong style="color:var(--red)">동일계열 아님 → 할인한도 합산 안 됨</strong>
         </div>
       </div>
 
       <div class="cashback-box cb-kb">
         <div class="cb-icon">☕</div>
         <div>
-          <div class="cb-title">스타벅스 매일 1잔 = 한 달 할인 효과</div>
-          <div class="cb-amount" style="color:var(--kb)">월 최대 5만원+</div>
-          <div class="cb-note">전월 60만원 이상 사용 시 · KB Pay 결제 추가 적립 포함</div>
+          <div class="cb-title">전월 80만원 이상 사용 시 월 최대 절약</div>
+          <div class="cb-amount" style="color:var(--kb)">월 최대 50,000원</div>
+          <div class="cb-note">일상혜택 + KB Pay 추가할인 통합 기준 / 전월 실적 80만원 이상</div>
         </div>
       </div>
 
       <div class="tip-box">
-        💡 <strong>머니픽 꿀팁:</strong> 매일 카페에서 커피 한 잔 + 편의점 결제만 해도 충분히 혜택 뽑을 수 있어요. <strong>KB Pay로 결제하면 2% 추가</strong>로 붙어서 체감 할인율이 더 올라가요! 넷플릭스는 포함 안 되니 구독료 할인은 우체국 개이득과 병행 사용이 가장 효율적이에요.
+        💡 <strong>머니픽 꿀팁:</strong> 넷플릭스·유튜브는 <strong>정률 할인이 아니라 건당 1,000원 정액 할인</strong>이에요! OTT 구독료 할인이 목적이라면 우체국 개이득(30% 캐시백)이 훨씬 유리해요. 노리2는 <strong>커피·통신비·영화·놀이공원</strong>까지 일상 10개 업종을 한 장으로 커버하는 것이 진짜 강점! 단, KB Pay형과 Global형 카드는 할인한도가 합산되지 않으니 두 장 동시 발급해도 한도가 늘어나지 않아요.
       </div>
-      <div class="rec-badge">✅ 추천 대상: 카페·편의점 헤비유저 직장인</div>
+      <div class="rec-badge">✅ 추천 대상: 카페·통신비·영화까지 다양하게 쓰는 직장인</div>
     </div>
   </div>
 </div>
